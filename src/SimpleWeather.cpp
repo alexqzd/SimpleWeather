@@ -16,28 +16,22 @@
 
 //const char fingerprint[] PROGMEM = "6E 33 1E DC B8 84 7C D7 40 B2 2C D2 80 F2 4A 38 1B D1 1D CE 6E FA 63 B9 91 FB 4A E9 58 FC 46 37"; // Darksky fingerprint
 
-OpenWeather::OpenWeather(String Key, String City){
-  //_Key = Key;
-  //_City = City;
+OpenWeather::OpenWeather(String Key, String City, String Language /*="en"*/) {
   _forecast = false;
-  _url = "/data/2.5/weather?q=" + City + "&appid=" + Key +"&units=metric";
+  _url = "/data/2.5/weather?q=" + City + "&appid=" + Key +"&units=metric" + "&lang=" + Language;
 }
 
-OpenWeather::OpenWeather(String Key, float lat, float longi){
-  //_Key = Key;
-  //_City = City;
+OpenWeather::OpenWeather(String Key, float lat, float longi, String Language /*="en"*/) {
   _forecast = false;
-  _url = "/data/2.5/weather?lat=" + String(lat) + "&long=" + String(longi) + "&appid=" + Key +"&units=metric";
+  _url = "/data/2.5/weather?lat=" + String(lat) + "&long=" + String(longi) + "&appid=" + Key +"&units=metric" + "&lang=" + Language;
 }
 
-OpenWeather::OpenWeather(String Key, String City, boolean forecast){
-  //_Key = Key;
-  //_City = City;
+OpenWeather::OpenWeather(String Key, String City, boolean forecast /*=false*/, String Language /*="en"*/) {
   _forecast = forecast;
   if(!forecast)
-    _url = "/data/2.5/weather?q=" + City + "&appid=" + Key +"&units=metric&cnt=1";
+    _url = "/data/2.5/weather?q=" + City + "&appid=" + Key +"&units=metric&cnt=1" + "&lang=" + Language;
   else
-    _url = "/data/2.5/forecast?q=" + City + "&appid=" + Key +"&units=metric&cnt=2";
+    _url = "/data/2.5/forecast?q=" + City + "&appid=" + Key +"&units=metric&cnt=2" + "&lang=" + Language;
 }
 
 void OpenWeather::updateStatus(weatherData *w){

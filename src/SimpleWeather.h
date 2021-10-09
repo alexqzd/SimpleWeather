@@ -25,9 +25,9 @@ struct weatherData{
 class OpenWeather
 {
   public:
-    OpenWeather(String Key, String City); 
-    OpenWeather(String Key, float lat, float longi);
-    OpenWeather(String Key, String City, boolean forecast);
+    OpenWeather(String Key, String City, String Language="en");
+    OpenWeather(String Key, float lat, float longi, String Language="en");
+    OpenWeather(String Key, String City, boolean forecast=false, String Language="en");
     void updateStatus(weatherData *w);
     String getResponse();
   private:
